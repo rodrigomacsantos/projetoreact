@@ -1,16 +1,17 @@
-import React from 'react'
+import React from 'react';
 import styles from './Header.module.css';
 import Link from 'next/link';
 
+
 export default function Header() {
   return (
-    <header className={styles.header}>
-      <h1>React & Next.js</h1>
-      <nav className={styles.nav}>
-        <Link href="/">Home </Link>
-        <Link href = "/produtos">Produtos </Link>
-        <Link href = "/tecnologias">Tecnologias </Link>
-      </nav>
+    <header className = {styles.header}>
+        <h1>Deisi Shop</h1>
+        <nav className = {styles.nav}>
+            <Link href = "/">Home </Link>
+            <Link href = "/produtos">Produtos </Link>
+            <Link href = "/tecnologias">Tecnologias </Link>
+        </nav>
     </header>
   )
 }

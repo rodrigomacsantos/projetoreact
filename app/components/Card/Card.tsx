@@ -1,24 +1,28 @@
 import React from "react";
-import styles from "./Card.module.css";
+import { Produto } from "@/app/models/interfaces";
 
 interface CardProps {
-  title: string;
-  image: string;
-  description: string;
-  price?: number; // Torna o campo opcional para suportar tecnologias (usando como "rating")
+  produto: Produto,    
+  addToCart: (produto: Produto) => void
 }
 
-const Card = ({ title, image, description, price }: CardProps) => {
+const Card = ({ produto, addToCart }: CardProps) => {
   return (
-    <div className={styles.card}>
-      <h2 className={styles.title}>{title}</h2>
-      <img src={image} alt={title} className={styles.image} />
-      {price !== undefined && (
-        <p className={styles.price}>
-          {price} {price > 5 ? "€" : "★"}
-        </p>
-      )}
-      <p className={styles.description}>{description}</p>
+    <div className="flex flex-col items-center p-4 border rounded-lg shadow-md">
+      <h2 className="text-xl font-bold mb-2 text-center">{produto.title}</h2>
+      <img 
+        src={produto.image} 
+        alt={produto.title} 
+        className="w-32 h-32 object-contain mb-4"
+      />      
+      <p className="font-semibold text-lg mb-2">{produto.price}€</p>
+      <button 
+        onClick={() => addToCart(produto)}
+        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mb-2"
+      >
+        + Adicionar
+      </button>      
+      <p className="text-gray-600 text-center">{produto.description}</p>    
     </div>
   );
 };
